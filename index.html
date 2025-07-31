@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phiritona Online - Community Chat Platform">
+    <title>Phiritona Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h1>Phiritona Online</h1>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="loading-text">Connecting community...</p>
+        </div>
+    </div>
+
+    <!-- Auth Container -->
+    <div id="auth-container" class="auth-container hidden">
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h1>Phiritona Online</h1>
+                <p>Connect with your community</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            
+            <div class="auth-switch">
+                <p>Don't have an account? <a href="#" id="showRegister">Sign Up</a></p>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="register-form" class="auth-form hidden">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h1>Join Phiritona Online</h1>
+                <p>Create your account</p>
+            </div>
+            
+            <form id="registerForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="registerUsername" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="registerPassword" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+            
+            <div class="auth-switch">
+                <p>Already have an account? <a href="#" id="showLogin">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="app-container hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo-small">
+                    <i class="fas fa-comments"></i>
+                    <span>Phiritona Online</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-status">
+                    <div class="status-indicator online" id="userStatus"></div>
+                    <span id="currentUsername">User</span>
+                </div>
+                <button id="notifications-btn" class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge hidden" id="notificationBadge">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <div class="avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h3 id="sidebarUsername">User</h3>
+                        <p id="userStatusMessage">Available</p>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="#" data-view="community" class="menu-item active">
+                    <i class="fas fa-users"></i> Community Chat
+                </a></li>
+                <li><a href="#" data-view="private" class="menu-item">
+                    <i class="fas fa-comment-dots"></i> Private Messages
+                </a></li>
+                <li><a href="#" data-view="profile" class="menu-item">
+                    <i class="fas fa-user-edit"></i> Profile
+                </a></li>
+                <li><a href="#" data-view="notifications" class="menu-item">
+                    <i class="fas fa-bell"></i> Notifications
+                </a></li>
+                <li><a href="#" data-view="privacy" class="menu-item">
+                    <i class="fas fa-shield-alt"></i> Privacy
+                </a></li>
+                <li><a href="#" data-view="about" class="menu-item">
+                    <i class="fas fa-info-circle"></i> About
+                </a></li>
+                <li><a href="#" id="logout-btn" class="menu-item logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Community Chat View -->
+            <div id="community-view" class="view active">
+                <div class="chat-header">
+                    <h2><i class="fas fa-users"></i> Community Chat</h2>
+                    <div class="online-count">
+                        <span id="onlineCount">1</span> online
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-messages" id="communityMessages">
+                        <div class="welcome-message">
+                            <p>Welcome to Phiritona Online Community Chat!</p>
+                            <p>Connect and share ideas with your community.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="chat-input">
+                            <button class="media-btn" id="mediaBtn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <input type="text" id="messageInput" placeholder="Type your message...">
+                            <button class="emoji-btn" id="emojiBtn">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <button class="send-btn" id="sendBtn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Media Options -->
+                        <div class="media-options hidden" id="mediaOptions">
+                            <button class="media-option" data-type="image">
+                                <i class="fas fa-image"></i> Photo
+                            </button>
+                            <button class="media-option" data-type="video">
+                                <i class="fas fa-video"></i> Video
+                            </button>
+                            <button class="media-option" data-type="voice">
+                                <i class="fas fa-microphone"></i> Voice Note
+                            </button>
+                        </div>
+                        
+                        <!-- Emoji Picker -->
+                        <div class="emoji-picker hidden" id="emojiPicker">
+                            <div class="emoji-grid">
+                                <span class="emoji">😀</span><span class="emoji">😃</span><span class="emoji">😄</span><span class="emoji">😁</span>
+                                <span class="emoji">😅</span><span class="emoji">😂</span><span class="emoji">🤣</span><span class="emoji">😊</span>
+                                <span class="emoji">😇</span><span class="emoji">🙂</span><span class="emoji">🙃</span><span class="emoji">😉</span>
+                                <span class="emoji">😌</span><span class="emoji">😍</span><span class="emoji">🥰</span><span class="emoji">😘</span>
+                                <span class="emoji">😗</span><span class="emoji">😙</span><span class="emoji">😚</span><span class="emoji">😋</span>
+                                <span class="emoji">😛</span><span class="emoji">😝</span><span class="emoji">😜</span><span class="emoji">🤪</span>
+                                <span class="emoji">🤨</span><span class="emoji">🧐</span><span class="emoji">🤓</span><span class="emoji">😎</span>
+                                <span class="emoji">👍</span><span class="emoji">👎</span><span class="emoji">👌</span><span class="emoji">✌️</span>
+                                <span class="emoji">🤞</span><span class="emoji">🤟</span><span class="emoji">🤘</span><span class="emoji">👏</span>
+                                <span class="emoji">🙌</span><span class="emoji">👐</span><span class="emoji">🤲</span><span class="emoji">🤝</span>
+                                <span class="emoji">🙏</span><span class="emoji">❤️</span><span class="emoji">💚</span><span class="emoji">💯</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Private Messages View -->
+            <div id="private-view" class="view">
+                <div class="private-header">
+                    <h2><i class="fas fa-comment-dots"></i> Private Messages</h2>
+                    <button class="btn-secondary" id="newChatBtn">
+                        <i class="fas fa-plus"></i> New Chat
+                    </button>
+                </div>
+                
+                <div class="private-container">
+                    <div class="chat-list" id="chatList">
+                        <div class="empty-state">
+                            <i class="fas fa-comment-slash"></i>
+                            <p>No private conversations yet</p>
+                            <p>Start a new chat to connect with someone!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="private-chat hidden" id="privateChat">
+                        <div class="private-chat-header">
+                            <button class="back-btn" id="backToList">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <div class="chat-user-info">
+                                <div class="avatar small">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h3 id="privateChatUsername">User</h3>
+                                    <span class="status" id="privateChatStatus">Online</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="privateMessages">
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="chat-input">
+                                <input type="text" id="privateMessageInput" placeholder="Type your message...">
+                                <button class="send-btn" id="privateSendBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile View -->
+            <div id="profile-view" class="view">
+                <div class="profile-header">
+                    <h2><i class="fas fa-user-edit"></i> Profile Settings</h2>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="profile-section">
+                        <h3>Avatar</h3>
+                        <div class="avatar-selection">
+                            <div class="current-avatar" id="currentAvatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button class="btn-secondary" id="changeAvatarBtn">Change Avatar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Status Message</h3>
+                        <div class="input-group">
+                            <input type="text" id="statusMessageInput" placeholder="What's on your mind?" maxlength="100">
+                            <button class="btn-primary" id="updateStatusBtn">Update</button>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Account Information</h3>
+                        <div class="info-item">
+                            <label>Username:</label>
+                            <span id="profileUsername">User</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email:</label>
+                            <span id="profileEmail">user@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Member since:</label>
+                            <span id="memberSince">Today</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications View -->
+            <div id="notifications-view" class="view">
+                <div class="notifications-header">
+                    <h2><i class="fas fa-bell"></i> Notifications</h2>
+                    <button class="btn-secondary" id="clearAllNotifications">Clear All</button>
+                </div>
+                
+                <div class="notifications-container" id="notificationsContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-bell-slash"></i>
+                        <p>No notifications</p>
+                        <p>You're all caught up!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings View -->
+            <div id="privacy-view" class="view">
+                <div class="privacy-header">
+                    <h2><i class="fas fa-shield-alt"></i> Privacy Settings</h2>
+                </div>
+                
+                <div class="privacy-container">
+                    <div class="privacy-section">
+                        <h3>Visibility</h3>
+                        <div class="setting-item">
+                            <label for="visibilityToggle">Show as online</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="visibilityToggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>Message Settings</h3>
+                        <div class="setting-item">
+                            <label for="privateMessagesToggle">Allow private messages</label>
+                            <label class="toggle">
+                                <input type="checkbox" id="privateMessagesToggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>Blocked Users</h3>
+                        <div class="blocked-users" id="blockedUsers">
+                            <div class="empty-state">
+                                <p>No blocked users</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About View -->
+            <div id="about-view" class="view">
+                <div class="about-header">
+                    <h2><i class="fas fa-info-circle"></i> About Phiritona Online</h2>
+                </div>
+                
+                <div class="about-container">
+                    <div class="about-content">
+                        <div class="logo-large">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Phiritona Online</h3>
+                        <p class="about-description">
+                            Phiritona Online is a local platform created to build unity and communication in our community. 
+                            It shall not promote any political interest. Its aim is to help share ideas, debate local issues, 
+                            and empower the community through communication and connection.
+                        </p>
+                        
+                        <div class="about-info">
+                            <div class="info-item">
+                                <label>Version:</label>
+                                <span>1.0.0</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Platform:</label>
+                                <span>Web/Mobile</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Contact:</label>
+                                <span>support@phiritona.online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <!-- New Chat Modal -->
+        <div id="new-chat-modal" class="modal">
+            <div class="modal-header">
+                <h3>Start New Chat</h3>
+                <button class="close-modal" data-modal="new-chat-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchUsers" placeholder="Search users...">
+                </div>
+                <div class="users-list" id="usersList">
+                    <div class="empty-state">
+                        <p>Search for users to start a conversation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Avatar Selection Modal -->
+        <div id="avatar-modal" class="modal">
+            <div class="modal-header">
+                <h3>Choose Avatar</h3>
+                <button class="close-modal" data-modal="avatar-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-grid">
+                    <div class="avatar-option" data-avatar="user">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="user-tie">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="user-graduate">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="user-astronaut">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="user-ninja">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="cat">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="dog">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <div class="avatar-option" data-avatar="heart">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file inputs for media -->
+    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    <input type="file" id="videoInput" accept="video/*" style="display: none;">
+
+    <script src="script.js"></script>
+</body>
+</html>
