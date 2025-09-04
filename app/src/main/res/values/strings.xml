@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Phiritonal Online</string>
+    <string name="app_slogan">Current Affairs. Real Conversation. True Connection.</string>
+    <string name="developer_name">App Developer Shaun Ntsala</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Welcome to Phiritonal Online</string>
+    <string name="get_started">Get Started</string>
+    
+    <!-- Language Selection -->
+    <string name="select_language">Select Your Language</string>
+    <string name="language_description">Choose your preferred language for the app</string>
+    <string name="continue_button">Continue</string>
+    
+    <!-- Authentication -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="no_account">Don\'t have an account? Sign up</string>
+    <string name="have_account">Already have an account? Sign in</string>
+    
+    <!-- Profile Setup -->
+    <string name="complete_profile">Complete Your Profile</string>
+    <string name="profile_description">Tell us a bit about yourself</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="nickname">Nickname</string>
+    <string name="use_nickname">Use a nickname instead</string>
+    <string name="bio_optional">Bio (Optional)</string>
+    <string name="bio_placeholder">Tell others about yourself...</string>
+    <string name="complete_setup">Complete Setup</string>
+    <string name="skip_for_now">Skip for now</string>
+    <string name="add_photo">Add Photo</string>
+    
+    <!-- Chat -->
+    <string name="community_chat">Community Chat</string>
+    <string name="private_chat">Private Chats</string>
+    <string name="schools_chat">Schools Chat</string>
+    <string name="shaun_ai">Shaun AI</string>
+    <string name="profile">Profile</string>
+    <string name="type_message">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="online_count">%d online</string>
+    
+    <!-- Schools -->
+    <string name="phiritona_sec">Phiritona Sec</string>
+    <string name="sediba_thuto_sec">Sediba Thuto Sec</string>
+    <string name="phirihadi">Phirihadi</string>
+    <string name="phitshana">Phitshana</string>
+    <string name="bhekilanga">Bhekilanga</string>
+    <string name="kearabetwe">Kearabetwe</string>
+    <string name="heilbron_high">Heilbron High</string>
+    
+    <!-- AI Assistant -->
+    <string name="shaun_ai_assistant">Shaun AI Assistant</string>
+    <string name="ai_online_status">Online • Ready to help</string>
+    <string name="ask_shaun_ai">Ask Shaun AI anything...</string>
+    <string name="quick_suggestions">Quick suggestions:</string>
+    <string name="ai_typing">Shaun AI is typing...</string>
+    
+    <!-- Profile -->
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_photo">Change Photo</string>
+    <string name="share_profile">Share Profile</string>
+    <string name="settings">Settings</string>
+    <string name="privacy_security">Privacy &amp; Security</string>
+    <string name="notifications">Notifications</string>
+    <string name="language">Language</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="about_app">About Phiritonal Online</string>
+    <string name="rate_app">Rate App</string>
+    <string name="sign_out">Sign Out</string>
+    
+    <!-- Settings -->
+    <string name="appearance">Appearance</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="personalized_colors">Personalized Colors</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="sound">Sound</string>
+    <string name="account_information">Account Information</string>
+    <string name="security">Security</string>
+    <string name="backup_sync">Backup &amp; Sync</string>
+    
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    
+    <!-- Permissions -->
+    <string name="camera_permission">Camera Permission</string>
+    <string name="camera_permission_description">This app needs camera permission to take photos</string>
+    <string name="microphone_permission">Microphone Permission</string>
+    <string name="microphone_permission_description">This app needs microphone permission for voice messages</string>
+    <string name="location_permission">Location Permission</string>
+    <string name="location_permission_description">This app needs location permission to share your location</string>
+</resources>
