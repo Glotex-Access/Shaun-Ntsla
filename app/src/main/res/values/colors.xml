@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Phiritonal Brand Colors -->
+    <color name="phiritonal_primary">#1976D2</color>
+    <color name="phiritonal_secondary">#FF9800</color>
+    <color name="phiritonal_tertiary">#4CAF50</color>
+    <color name="phiritonal_error">#E53935</color>
+    
+    <!-- Dark Theme Colors -->
+    <color name="phiritonal_primary_dark">#90CAF9</color>
+    <color name="phiritonal_secondary_dark">#FFCC02</color>
+    <color name="phiritonal_tertiary_dark">#81C784</color>
+</resources>
